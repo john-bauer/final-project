@@ -1,6 +1,3 @@
-/********************************
-********* ENVIRONMENT ***********
-********************************/
 const express = require('express');
 const app = require('express')();
 const http = require('http').Server(app);
@@ -13,11 +10,53 @@ const env = require('dotenv').config();
 const routes = express.Router();
 const watson = require('watson-developer-cloud');
 const language_translator = watson.language_translator({
-  url: "https://gateway.watsonplatform.net/language-translator/api",
+  url: 'https://gateway.watsonplatform.net/language-translator/api',
   username: process.env.USERNAME,
   password: process.env.PASSWORD,
-  version: "v2"
+  version: 'v2'
 });
+
+/*=================================
+    WATSON TRANSLATE FUNCTION
+=================================*/
+translate = (msg, source, target) => {
+  console.log('translating');
+  language_translator.translate({
+    text: msg,
+    source: source,
+    target: target
+  }, function(err, translation) {
+    if (err){
+      console.log(err);
+    }
+    else {
+      console.log(translation.translations[0].translation);
+    }
+  });
+}
+
+/*------ test translation ---*/
+translate('hello', 'en', 'es');
+
+
+/*=================================
+        USER DATA HANDLING
+=================================*/
+let userData = [];
+let userCount = (userData.length + 1);
+
+createUser = (userInput) =>{
+  userData.push(userInput);
+  console.log('ADDING USER...');
+  console.log(userData);
+  console.log('GETTING NEW USER COUNT')
+  console.log(userData.length);
+}
+
+
+/********************************
+********* ENVIRONMENT ***********
+********************************/
 
 /*========== STATIC FILE ==========*/
 app.use('/static', express.static(path.join(__dirname, 'public')));
@@ -41,8 +80,10 @@ app.get('/', function(req, res) {
   });
 });
 
+/*===== HANDLE USER SUBMISSION ===*/
 routes.post('/', (req, res) => {
-  console.log(req.body);
+  let userInput = req.body;
+  createUser(userInput);
 })
 
 app.use('/', routes);
