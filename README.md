@@ -41,5 +41,7 @@ CHAT
 6. As a USER, I can see when another user has left the chatroom.
 7. As a USER, I can write a message and publish it to the channel.
 8. As a SYSTEM, I can request translations from IBM Watson, and publish the message in its source and target language to both users.
-
+9. As a USER, I can leave the chatroom and exit to the landing page at any time.
 ```
+
+
