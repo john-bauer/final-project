@@ -36,8 +36,7 @@ app.use(methodOverride('_method'));
 /*============ ROUTES =============*/
 app.get('/', function(req, res) {
   res.render('index', {
-    message: 'Hello EJS',
-    documentTitle: 'Fluently',
+    documentTitle: 'Fluently'
   });
 });
 
