@@ -16,44 +16,6 @@ const language_translator = watson.language_translator({
   version: 'v2'
 });
 
-/*=================================
-    WATSON TRANSLATE FUNCTION
-=================================*/
-translate = (msg, source, target) => {
-  console.log('translating');
-  language_translator.translate({
-    text: msg,
-    source: source,
-    target: target
-  }, function(err, translation) {
-    if (err){
-      console.log(err);
-    }
-    else {
-      console.log(translation.translations[0].translation);
-    }
-  });
-}
-
-/*------ test translation ---*/
-translate('hello', 'en', 'es');
-
-
-/*=================================
-        USER DATA HANDLING
-=================================*/
-let userData = [];
-let userCount = (userData.length + 1);
-
-createUser = (userInput) =>{
-  userData.push(userInput);
-  console.log('ADDING USER...');
-  console.log(userData);
-  console.log('GETTING NEW USER COUNT')
-  console.log(userData.length);
-}
-
-
 /********************************
 ********* ENVIRONMENT ***********
 ********************************/
@@ -96,22 +58,42 @@ http.listen(PORT, function(){
 
 /*********************************
 **********************************/
-/*================================
-          USER DATA
-================================*/
 
+/*=================================
+    WATSON TRANSLATE FUNCTION
+=================================*/
+translate = (msg, source, target) => {
+  language_translator.translate({
+    text: msg,
+    source: source,
+    target: target
+  }, function(err, translation) {
+    if (err){
+      console.log(err);
+    }
+    else {
+      console.log(translation.translations[0].translation);
+    }
+  });
+}
 
+/*=================================
+        USER DATA HANDLING
+=================================*/
+let userData = [];
+let userCount = (userData.length + 1);
 
-/*================================
-          CHAT SERVER
-================================*/
+createUser = (userInput) =>{
+  userData.push(userInput);
+  console.log('ADDING USER...');
+  console.log(userData);
+  console.log('GETTING NEW USER COUNT')
+  console.log(userData.length);
+}
 
-
-
-/*================================
-          CHAT SERVER
-================================*/
-
+/*=================================
+        CHAT SERVER
+=================================*/
 
 
 
