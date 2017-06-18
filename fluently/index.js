@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const path = require('path');
 const env = require('dotenv').config();
+const routes = express.Router();
 const watson = require('watson-developer-cloud');
 const language_translator = watson.language_translator({
   url: "https://gateway.watsonplatform.net/language-translator/api",
@@ -40,6 +41,11 @@ app.get('/', function(req, res) {
   });
 });
 
+routes.post('/', (req, res) => {
+  console.log(req.body);
+})
+
+app.use('/', routes);
 
 /*======== SERVER LISTENING ======*/
 const PORT = process.env.PORT || 3000;
