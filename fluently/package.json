@@ -1,0 +1,11 @@
+{
+  "name": "fluently",
+  "version": "0.0.1",
+  "description": "An application that lets you chat with anyone in the world, even if you don't speak the same language.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "John Bauer",
+  "license": "ISC"
+}
