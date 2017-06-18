@@ -71,8 +71,8 @@ http.listen(PORT, function(){
 translate = (msg, source, target) => {
   language_translator.translate({
     text: msg,
-    source: source,
-    target: target
+    source: 'en',
+    target: 'es',
   }, function(err, translation) {
     if (err){
       console.log(err);
@@ -100,6 +100,30 @@ createUser = (userInput) =>{
 /*=================================
         CHAT SERVER
 =================================*/
+/*------ log "a user connected"-------*/
+io.on('connection', function(socket){
+  console.log('a user connected');
+  /*------ log "user disconnected"----*/
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  })
+});
+
+/*------- emit message to channel ---*/
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    io.sockets.emit('chat message', msg);
+    translate(msg, function (err, output) {
+      if (err) {
+        console.log('error')
+        return;
+      } else {
+      io.sockets.emit('chat message', output);
+      }
+    });
+  });
+});
+
 
 /*======== CATCHING 404 =========*/
 app.get('*', function(req, res){
