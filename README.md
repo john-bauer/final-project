@@ -14,9 +14,8 @@ To get started, the user simply inputs a first name, country, and primary langua
 I have **one day** to build the MVP, so my biggest challenge will be feature prioritization and time management. I've inspected the API's and tools thoroughly and written lots of the code I'll need in isolation, so today will be mostly about managing complexity and piecing it all together.
 
 ### Wireframes
-![Get Started](# "Get Started")
-**Start**
-![Chat](# "Chat")
+![Get Started](https://raw.githubusercontent.com/john-bauer/final-project/master/assets/wireframes/Form.png "Get Started")
+![Chat](https://github.com/john-bauer/final-project/blob/master/assets/wireframes/chat.png "Chat")
 
 ## User Stories
 
