@@ -15,6 +15,14 @@ const language_translator = watson.language_translator({
   version: "v2"
 });
 
+/*================================
+            ROUTES
+================================*/
+
+app.get('/', function(req, res){
+  res.send('hello express');
+});
+
 /*===============================
         SERVER LISTENING
 ===============================*/
