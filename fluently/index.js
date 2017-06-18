@@ -42,6 +42,12 @@ app.get('/', function(req, res) {
   });
 });
 
+app.get('/chat', function(req, res) {
+  res.render('chat', {
+    documentTitle: 'Chat'
+  });
+});
+
 /*===== HANDLE USER SUBMISSION ===*/
 routes.post('/', (req, res) => {
   let userInput = req.body;
@@ -94,9 +100,6 @@ createUser = (userInput) =>{
 /*=================================
         CHAT SERVER
 =================================*/
-
-
-
 
 /*======== CATCHING 404 =========*/
 app.get('*', function(req, res){
