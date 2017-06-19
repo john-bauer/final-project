@@ -120,6 +120,7 @@ sendUserId = (userCount, userData) => {
 /*------ log "a user connected"-------*/
 io.on('connection', function(socket){
   console.log('a user connected');
+  let news = 'a user connected';
   io.sockets.emit('news', 'a user connected')
   /*------ log "user disconnected"----*/
   socket.on('disconnect', function(){
@@ -143,6 +144,8 @@ io.on('connection', function(socket){
     });
   });
 });
+
+
 
 
 

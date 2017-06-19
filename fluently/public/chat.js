@@ -1,15 +1,3 @@
-// $(function() {
-//   var socket = io();
-//   $('form').submit(function() {
-//     socket.emit('chat message', $('#m').val());
-//     $('#m').val('');
-//     return false;
-//   });
-//   socket.on('chat message', function(msg) {
-//     $('#messages').append($('<li>').text(msg));
-//   });
-// });
-
 /*=========================*/
 const socket = io();
 const messages = document.querySelector('#messages');
@@ -31,6 +19,14 @@ socket.on('chat message', function(msg){
   message.innerHTML = msg;
   messages.appendChild(message);
 })
+
+socket.on('news', function(news){
+  let alert = document.createElement('li');
+  alert.innerHTML = news;
+  alert.setAttribute('class', 'alert');
+  messages.appendChild(alert);
+})
+
 
 
 /*===========================
