@@ -5,12 +5,21 @@ const input = document.querySelector('#m');
 const form = document.querySelector('form');
 let source;
 let target;
+let userId = window.userId
+
+/*========= get user details =========*/
+socket.on('getUserDetails', function(userId){
+  console.log(userId);
+  userId = window.userId;
+})
 
 /*========= publishing =========*/
-publish = () => {
+publish = (userId) => {
+  console.log(userId);
   source = input.value
-  socket.emit('chat message', input.value);
-  input.value = ''
+  console.log(input.value);
+  socket.emit('chat message',`${input.value}`);
+  input.value = '';
   return false;
 }
 

@@ -92,8 +92,6 @@ const translate = function (msg, callback) {
         USER DATA HANDLING
 =================================*/
 let userData = [];
-let userOne = {};
-let userTwo = {};
 let userCount = 0;
 
 /*------ create user --------*/
@@ -111,8 +109,10 @@ createUser = (userInput) =>{
 sendUserId = (userCount, userData) => {
   userId = userData[userCount - 1];
   console.log(`Your User ID is: ${JSON.stringify(userId)}`);
+  io.on('connection', function(socket){
+    io.emit('getUserDetails', userId);
+  })
 }
-
 /*=================================
           CHAT SERVER
 =================================*/
@@ -132,7 +132,7 @@ io.on('connection', function(socket){
 /*------- emit message to channel ---*/
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
-    userMessage = "[Name]: " + msg;
+    userMessage = " " + msg;
     io.sockets.emit('chat message', userMessage);
     translate(msg, function (err, output) {
       if (err) {
@@ -144,9 +144,6 @@ io.on('connection', function(socket){
     });
   });
 });
-
-
-
 
 
 /*======== CATCHING 404 =========*/
