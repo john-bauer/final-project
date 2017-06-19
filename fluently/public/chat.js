@@ -1,5 +1,3 @@
-console.log('connected to chat.js');
-/* append messages to dom */
 $(function() {
   var socket = io();
   $('form').submit(function() {

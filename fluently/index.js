@@ -44,7 +44,7 @@ app.get('/', function(req, res) {
 
 app.get('/chat', function(req, res) {
   res.render('chat', {
-    documentTitle: 'Chat'
+    documentTitle: 'Fluently | Chat'
   });
 });
 
@@ -52,6 +52,7 @@ app.get('/chat', function(req, res) {
 routes.post('/', (req, res) => {
   let userInput = req.body;
   createUser(userInput);
+  res.redirect('/chat');
 })
 
 app.use('/', routes);
@@ -68,20 +69,24 @@ http.listen(PORT, function(){
 /*=================================
     WATSON TRANSLATE FUNCTION
 =================================*/
-translate = (msg, source, target) => {
-  language_translator.translate({
+const translate = function (msg, callback) {
+    language_translator.translate({
     text: msg,
-    source: 'en',
-    target: 'es',
+    source: "en",
+    target: "it",
   }, function(err, translation) {
+    let output;
     if (err){
-      console.log(err);
+      output = "error";
+      console.log(output);
+      callback(err);
     }
     else {
-      console.log(translation.translations[0].translation);
+      output = (translation.translations[0].translation);
+      callback(null, output);
     }
   });
-}
+};
 
 /*=================================
         USER DATA HANDLING
