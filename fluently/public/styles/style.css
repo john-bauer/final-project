@@ -1,12 +1,10 @@
 /*========================
     UNIVERSAL STYLES
 ========================*/
-body {
-
+.source {
+  color: red;
 }
 
-
-
-.hidden {
-  display: hidden
+.target {
+  color: blue;
 }

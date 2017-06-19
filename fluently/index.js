@@ -114,28 +114,24 @@ sendUserId = (userCount, userData) => {
 }
 
 /*=================================
-        CHAT SERVER
+          CHAT SERVER
 =================================*/
-io.on('connection', function(socket){
-  console.log('about to send user id');
-  socket.emit()
-})
 
 /*------ log "a user connected"-------*/
 io.on('connection', function(socket){
   console.log('a user connected');
-  io.sockets.emit('chat message', 'a user connected')
+  io.sockets.emit('news', 'a user connected')
   /*------ log "user disconnected"----*/
   socket.on('disconnect', function(){
-    console.log('user disconnected');
-    io.sockets.emit('chat message','a user disconnected')
+    console.log('a user disconnected');
+    io.sockets.emit('news','a user disconnected')
   })
 });
 
 /*------- emit message to channel ---*/
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
-    userMessage = "Name:" + msg;
+    userMessage = "[Name]: " + msg;
     io.sockets.emit('chat message', userMessage);
     translate(msg, function (err, output) {
       if (err) {
