@@ -1,6 +1,97 @@
-/*========================
-    UNIVERSAL STYLES
-========================*/
+.navbar {
+  background-color: #e51c23;
+  border-radius: none;
+}
+
+.form-submit{
+  width: 275px;
+  text-align:center;
+  margin-top: 80px;
+  border-radius: 50px;
+}
+
+.form-group {
+  margin: 0 auto;
+  width: 400px;
+  background-color: #F5F5F5;
+  padding: 60px;
+  border-radius: 5px;
+}
+
+
+.get-started{
+  text-align:center;
+  font-size: 32px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+/*====================================*/
+
+main {
+  background-color: #f5f5f5
+}
+
+.chat-container{
+  margin-top: -20px;
+  bottom: 0;
+}
+
+
+.messages li {
+  list-style: none;
+  font-size: 16px;
+}
+
 .alert {
-  color: red;
+  color: #333;
+  font-weight: bold;
+  text-align:center;
+}
+
+.input-container {
+  width: 100%;
+  background-color: #e51c23;
+  height: 50px;
+  padding: 10px;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  justify-content: center;
+}
+
+
+.chat-box {
+  width: 300px;
+  border-radius: 50px;
+  border-style: none;
+  padding-left: 30px;
+}
+
+.chat-button {
+  width: 80px;
+  border-style: none;
+  background-color: #e51c23;
+  font-weight: bold;
+  color: #fff;
+  font-size: 16px;
+}
+
+@media screen and (min-width: 480px) {
+  .chat-box {
+    width: 400px;
+  }
+}
+
+
+@media screen and (min-width: 720px) {
+  .chat-box {
+    width: 600px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .chat-box {
+    width: 980px;
+  }
 }

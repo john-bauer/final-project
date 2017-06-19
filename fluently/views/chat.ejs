@@ -1,9 +1,16 @@
 <% include ./partials/boilerplate.ejs %>
-<div class="chat-div">
-<ul id="messages"></ul>
-  <form action="">
-    <input id="m" autocomplete="off" /><button id="sendButton">Send</button>
-  </form>
+<% include ./partials/nav.ejs %>
+<div class="chat-row row"></div>
+  <div class="chat-container col-xs-12">
+  <ul class="messages" id="messages"></ul>
+  </div>
+
+  <div class="input-container col-xs-12">
+    <form class="input-form" action="">
+      <input class="chat-box" id="m" autocomplete="off" /><button class="chat-button" id="sendButton">Send</button>
+    </form>
+  </div>
+  </div>
 </div>
 
 <!-- SCRIPTS -->

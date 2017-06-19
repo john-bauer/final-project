@@ -132,7 +132,7 @@ io.on('connection', function(socket){
 /*------- emit message to channel ---*/
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
-    userMessage = " " + msg;
+    userMessage = "[NAME]:" + msg;
     io.sockets.emit('chat message', userMessage);
     translate(msg, function (err, output) {
       if (err) {
