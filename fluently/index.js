@@ -92,14 +92,13 @@ const translate = function (msg, callback) {
         USER DATA HANDLING
 =================================*/
 let userData = [];
-let userCount = (userData.length + 1);
+let userCount = 0;
 
 createUser = (userInput) =>{
   userData.push(userInput);
-  console.log('ADDING USER...');
-  console.log(userData);
-  console.log('GETTING NEW USER COUNT')
-  console.log(userData.length);
+  console.log(`userData: ${JSON.stringify(userData)}`);
+  userCount++;
+  console.log(`userCount: ${userCount}`);
 }
 
 /*=================================
@@ -111,13 +110,15 @@ io.on('connection', function(socket){
   /*------ log "user disconnected"----*/
   socket.on('disconnect', function(){
     console.log('user disconnected');
+    socket.emit
   })
 });
 
 /*------- emit message to channel ---*/
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
-    io.sockets.emit('chat message', msg);
+    userMessage = "Name:" + msg;
+    io.sockets.emit('chat message', userMessage);
     translate(msg, function (err, output) {
       if (err) {
         console.log('error')
@@ -128,6 +129,7 @@ io.on('connection', function(socket){
     });
   });
 });
+
 
 
 /*======== CATCHING 404 =========*/
