@@ -92,25 +92,43 @@ const translate = function (msg, callback) {
         USER DATA HANDLING
 =================================*/
 let userData = [];
+let userOne = {};
+let userTwo = {};
 let userCount = 0;
 
+/*------ create user --------*/
 createUser = (userInput) =>{
   userData.push(userInput);
-  console.log(`userData: ${JSON.stringify(userData)}`);
+  console.log(userData);
   userCount++;
-  console.log(`userCount: ${userCount}`);
+  console.log(`There are currently (${userCount}) user(s)`);
+  let userOne = userData[0];
+  let userTwo = userData[1];
+  sendUserId(userCount, userData);
+}
+
+/*------ send user id --------*/
+sendUserId = (userCount, userData) => {
+  userId = userData[userCount - 1];
+  console.log(`Your User ID is: ${JSON.stringify(userId)}`);
 }
 
 /*=================================
         CHAT SERVER
 =================================*/
+io.on('connection', function(socket){
+  console.log('about to send user id');
+  socket.emit()
+})
+
 /*------ log "a user connected"-------*/
 io.on('connection', function(socket){
   console.log('a user connected');
+  io.sockets.emit('chat message', 'a user connected')
   /*------ log "user disconnected"----*/
   socket.on('disconnect', function(){
     console.log('user disconnected');
-    socket.emit
+    io.sockets.emit('chat message','a user disconnected')
   })
 });
 
