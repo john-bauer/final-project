@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "John Bauer",
   "license": "ISC",
@@ -21,6 +23,8 @@
     "nodemon": "^1.11.0",
     "path": "^0.12.7",
     "socket.io": "^2.0.3",
-    "watson-developer-cloud": "^2.32.1"
-  }
+    "watson-developer-cloud": "^2.32.1",
+    "snyk": "^1.83.0"
+  },
+  "snyk": true
 }
