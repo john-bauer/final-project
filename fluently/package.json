@@ -20,7 +20,7 @@
     "morgan": "^1.8.2",
     "nodemon": "^1.11.0",
     "path": "^0.12.7",
-    "socket.io": "^2.0.3",
+    "socket.io": "^2.4.0",
     "watson-developer-cloud": "^2.32.1"
   }
 }
